@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace Bag_Ass1
 {
-    internal class Methods
+    public class Methods
     {
-        //!ELEMENTS AND COUNT
-        /*
-         public void elem(List<List<int>> numbers_bags)
+
+        public class BagEmptyException : Exception
         {
-
-            for (int i = 0; i < numbers_bags.Count; i++)
+            public BagEmptyException() { }
+            public BagEmptyException(string message)
+                : base(message)
             {
-                for (int j = 0; j < numbers_bags[i].Count; j++)
-                {
-                    Console.Write(numbers_bags[i][j] + ",");
 
-
-                }
-                Console.WriteLine("\n");
             }
-            Console.WriteLine("Count: " + numbers_bags.Count);
-        }
-         */
+        };
+        public class ElementNotInBagException : Exception
+        {
+            public ElementNotInBagException() { }
+            public ElementNotInBagException(string message)
+                : base(message)
+            {
 
+            }
+        }
 
         //!INSERTING AN ELEMENT
         public void insert(List<List<int>> bag, in int num)
@@ -60,12 +60,11 @@ namespace Bag_Ass1
         {
             //we first check if the element is in the bag
             int length = bag.Count;
+
             if (length == 0)
             {
-                //throw new BagEmptyException("Bag is empty!!");
-                Console.WriteLine("Bag empty!!");
+                Console.WriteLine("Bag is Empty!!");
                 return;
-
             }
             else
             {
@@ -78,35 +77,7 @@ namespace Bag_Ass1
                         break;
                     }
                 }
-                /*
-                 try
-                {
-                    for (int i = 0; i < length; i++)
-                    {
 
-                        if (bag[i][0] == rem_Num)
-                        {
-                            if (bag[i][1] == 1)
-                            {
-                                bag.RemoveAt(i);
-                                break;
-                            }
-                            else
-                            {
-                                bag[i][1]--;
-                                break;
-                            }
-                        }
-
-                    }
-
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message
-                }
-                 */
 
 
                 if (is_In)
@@ -130,14 +101,17 @@ namespace Bag_Ass1
 
                     }
                 }
-                else
+                else if (is_In == false && length != 0)
                 {
-                    throw new ElementNotInBagException("The element is not in the bag!!");
-                    //Console.WriteLine("Not in bag");
+                    //throw new ElementNotInBagException("The element is not in the bag!!");
+                    Console.WriteLine("Number not in the bag!!\n");
                 }
 
 
             }
+
+
+
 
         }
 
@@ -213,11 +187,11 @@ namespace Bag_Ass1
             if (bag.Count == 0)
             {
                 //empty bag
-                Console.WriteLine("Bag empty!!");
+                Console.WriteLine("Bag empty!!\n");
             }
             else
             {
-                Console.WriteLine("\n\nThe bag in pairs of {element,frequency} is as follows:\n");
+                Console.WriteLine("\n\nThe bag in pairs of {element,frequency} is as follows:");
                 for (int i = 0; i < bag.Count; i++)
                 {
                     for (int j = 0; j < bag[i].Count; j++)
