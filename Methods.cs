@@ -58,7 +58,8 @@ namespace Bag_Ass1
         //!REMOVE AN ELEMENT FROM THE BAG
         public void remove(List<List<int>> bag, in int rem_Num)
         {
-            //we first check if the element is in the bag
+            try
+            {
             int length = bag.Count;
 
             if (length == 0)
