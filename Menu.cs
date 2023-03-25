@@ -40,13 +40,13 @@ namespace Bag_Ass1
             {
                 mt.remove(bag, element);
             }
-            catch (BagEmptyException)
+            catch (BagEmptyException e)
             {
-                throw new BagEmptyException("Bag is Empty");
+                Console.WriteLine(e.Message);
             }
 
         }
-        public void frequency()
+        public void returnFrequency()
         {
             try
             {
@@ -55,9 +55,9 @@ namespace Bag_Ass1
                 mt.return_Frequency(bag, element);
 
             }
-            catch (IndexOutOfRangeException e)
+            catch (ArgumentOutOfRangeException e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error: " + e.Message + "!!");
             }
         }
         public void most_freq()
@@ -66,9 +66,9 @@ namespace Bag_Ass1
             {
                 mt.most_frequent(bag);
             }
-            catch (IndexOutOfRangeException e)
+            catch (ArgumentOutOfRangeException e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Error:  " + e.Message + "!!");
             }
 
         }
@@ -78,7 +78,7 @@ namespace Bag_Ass1
             {
                 mt.print_the_bag(bag);
             }
-            catch (IndexOutOfRangeException e)
+            catch (BagEmptyException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -98,7 +98,7 @@ namespace Bag_Ass1
                         remove();
                         break;
                     case 3:
-                        frequency();
+                        returnFrequency();
                         break;
                     case 4:
                         most_freq();
@@ -107,7 +107,7 @@ namespace Bag_Ass1
                         printBag();
                         break;
                 }
-                if (opt != 0 && opt > 5 && opt < 0)
+                if (opt > 5 || opt < 0)
                 {
                     Console.WriteLine("Unsupported Operation!!");
                 }

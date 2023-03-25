@@ -5,7 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Bag_Ass1
+#region CustomExceptions
 {
+    public class BagEmptyException : Exception
+    {
+        public BagEmptyException(string message) : base(message)
+        {
+
+        }
+    }
+    public class ElementNotInBagException : Exception
+    {
+        public ElementNotInBagException(string message) : base(message)
+        {
+
+        }
+    }
+    #endregion
+
     public class Methods
     {
 
@@ -44,7 +61,7 @@ namespace Bag_Ass1
             int length = bag.Count;
             if (length == 0)
             {
-                throw new IndexOutOfRangeException("Bag is Empty!!");
+                throw new BagEmptyException("Error: Bag is empty!");
             }
             bool is_In = false;
             for (int i = 0; i < length; i++)
@@ -94,7 +111,7 @@ namespace Bag_Ass1
             int frequency = 0;
             if (length == 0)
             {
-                throw new IndexOutOfRangeException("Bag is empty,Operation not possible!!");
+                throw new ArgumentOutOfRangeException();
             }
             else
             {
@@ -124,7 +141,7 @@ namespace Bag_Ass1
                 }
                 else
                 {
-                    throw new IndexOutOfRangeException("Number not in bag, cannot get the frequency!!");
+                    throw new ArgumentOutOfRangeException("Number not in bag, cannot get the frequency!!");
                 }
             }
             return frequency;
@@ -138,7 +155,7 @@ namespace Bag_Ass1
             int most_freq = 0;
             if (length == 0)
             {
-                throw new IndexOutOfRangeException("Bag empty, Operation not possible!!");
+                throw new ArgumentOutOfRangeException();
 
             }
             else
@@ -162,7 +179,7 @@ namespace Bag_Ass1
             if (bag.Count == 0)
             {
                 //empty bag
-                throw new IndexOutOfRangeException("Bag is empty,Operation not possible!!");
+                throw new BagEmptyException("Bag is empty,Operation not possible!!");
             }
             else
             {
