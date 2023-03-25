@@ -9,24 +9,7 @@ namespace Bag_Ass1
     public class Methods
     {
 
-        public class BagEmptyException : Exception
-        {
-            public BagEmptyException() { }
-            public BagEmptyException(string message)
-                : base(message)
-            {
 
-            }
-        };
-        public class ElementNotInBagException : Exception
-        {
-            public ElementNotInBagException() { }
-            public ElementNotInBagException(string message)
-                : base(message)
-            {
-
-            }
-        }
 
         //!INSERTING AN ELEMENT
         public void insert(List<List<int>> bag, in int num)
@@ -58,78 +41,65 @@ namespace Bag_Ass1
         //!REMOVE AN ELEMENT FROM THE BAG
         public void remove(List<List<int>> bag, in int rem_Num)
         {
-            try
-            {
             int length = bag.Count;
-
             if (length == 0)
             {
-                Console.WriteLine("Bag is Empty!!");
-                return;
+                throw new IndexOutOfRangeException("Bag is Empty!!");
             }
-            else
+            bool is_In = false;
+            for (int i = 0; i < length; i++)
             {
-                bool is_In = false;
+                if (bag[i][0] == rem_Num)
+                {
+                    is_In = true;
+                    break;
+                }
+            }
+
+            if (is_In)
+            {
                 for (int i = 0; i < length; i++)
                 {
+
                     if (bag[i][0] == rem_Num)
                     {
-                        is_In = true;
-                        break;
-                    }
-                }
-
-
-
-                if (is_In)
-                {
-                    for (int i = 0; i < length; i++)
-                    {
-
-                        if (bag[i][0] == rem_Num)
+                        if (bag[i][1] == 1)
                         {
-                            if (bag[i][1] == 1)
-                            {
-                                bag.RemoveAt(i);
-                                break;
-                            }
-                            else
-                            {
-                                bag[i][1]--;
-                                break;
-                            }
+                            bag.RemoveAt(i);
+                            break;
                         }
-
+                        else
+                        {
+                            bag[i][1]--;
+                            break;
+                        }
                     }
-                }
-                else if (is_In == false && length != 0)
-                {
-                    //throw new ElementNotInBagException("The element is not in the bag!!");
-                    Console.WriteLine("Number not in the bag!!\n");
-                }
 
-
+                }
             }
-
+            else if (is_In == false && length != 0)
+            {
+                Console.WriteLine("Number not in the bag!!\n");
+            }
 
 
 
         }
 
+
         //!RETURN THE FREQUENCY
-        public void return_Frequency(List<List<int>> bag, in int num_Return)
+        public int return_Frequency(List<List<int>> bag, in int num_Return)
         {
             int length = bag.Count;
+            int frequency = 0;
             if (length == 0)
             {
-                Console.WriteLine("Error!!Bag empty!!");
-                return;
+                throw new IndexOutOfRangeException("Bag is empty,Operation not possible!!");
             }
             else
             {
                 //Check if the number is in the bag
                 bool is_In = false;
-                int frequency = 0;
                 for (int i = 0; i < length; i++)
                 {
                     if (bag[i][0] == num_Return)
@@ -150,27 +120,30 @@ namespace Bag_Ass1
                             break;
                         }
                     }
-                    Console.WriteLine($"Frequency of {num_Return}: {frequency}");
+
                 }
                 else
                 {
-                    Console.WriteLine($"Error!!{num_Return} is not in the bag!!");
+                    throw new IndexOutOfRangeException("Number not in bag, cannot get the frequency!!");
                 }
             }
+            return frequency;
         }
 
         //!RETURNING THE MOST FREQUENT ELEMENT FROM THE BAG
-        public void most_frequent(List<List<int>> bag)
+        public int most_frequent(List<List<int>> bag)
         {
             int length = bag.Count;
+
+            int most_freq = 0;
             if (length == 0)
             {
-                Console.WriteLine("Error!!Bag empty!!");
+                throw new IndexOutOfRangeException("Bag empty, Operation not possible!!");
+
             }
             else
             {
                 int frequency = 0;
-                int most_freq = 0;
                 for (int i = 0; i < length; i++)
                 {
                     if (bag[i][1] > frequency)
@@ -179,8 +152,9 @@ namespace Bag_Ass1
                         frequency = bag[i][1];
                     }
                 }
-                Console.WriteLine($"Most frequent element: {most_freq}");
+
             }
+            return most_freq;
         }
 
         public void print_the_bag(List<List<int>> bag)
@@ -188,7 +162,7 @@ namespace Bag_Ass1
             if (bag.Count == 0)
             {
                 //empty bag
-                Console.WriteLine("Bag empty!!\n");
+                throw new IndexOutOfRangeException("Bag is empty,Operation not possible!!");
             }
             else
             {

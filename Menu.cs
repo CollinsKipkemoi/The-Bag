@@ -48,17 +48,40 @@ namespace Bag_Ass1
         }
         public void frequency()
         {
-            Console.Write("Enter the element to check frequency: ");
-            int element = Convert.ToInt32(Console.ReadLine());
-            mt.return_Frequency(bag, element);
+            try
+            {
+                Console.Write("Enter the element to check frequency: ");
+                int element = Convert.ToInt32(Console.ReadLine());
+                mt.return_Frequency(bag, element);
+
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         public void most_freq()
         {
-            mt.most_frequent(bag);
+            try
+            {
+                mt.most_frequent(bag);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
         public void printBag()
         {
-            mt.print_the_bag(bag);
+            try
+            {
+                mt.print_the_bag(bag);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         public void Run()
         {
