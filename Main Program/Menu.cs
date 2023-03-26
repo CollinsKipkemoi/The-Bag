@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bag_Ass1
+namespace Assignment1
 {
     public class Menu
     {
@@ -13,7 +13,6 @@ namespace Bag_Ass1
         {
             mt = new Methods();
         }
-        List<List<int>> bag = new List<List<int>>();
         public int option()
         {
             Console.WriteLine("0. Exit!");
@@ -30,7 +29,7 @@ namespace Bag_Ass1
         {
             Console.Write("Enter the element to insert: ");
             int element = Convert.ToInt32(Console.ReadLine());
-            mt.insert(bag, element);
+            Console.WriteLine($"Most frequent element: {mt.insert(element)}\n");
         }
         public void remove()
         {
@@ -38,9 +37,13 @@ namespace Bag_Ass1
             int element = Convert.ToInt32(Console.ReadLine());
             try
             {
-                mt.remove(bag, element);
+                Console.WriteLine($"Most frequent element: {mt.remove(element)} \n");
             }
             catch (BagEmptyException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (ElementNotInBagException e)
             {
                 Console.WriteLine(e.Message);
             }
@@ -52,23 +55,28 @@ namespace Bag_Ass1
             {
                 Console.Write("Enter the element to check frequency: ");
                 int element = Convert.ToInt32(Console.ReadLine());
-                mt.return_Frequency(bag, element);
+
+                Console.WriteLine($"The frequency of {element} is : {mt.return_Frequency(element)}");
 
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (BagEmptyException e)
             {
-                Console.WriteLine("Error: " + e.Message + "!!");
+                Console.WriteLine(e.Message + "!!");
+            }
+            catch (ElementNotInBagException e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
         public void most_freq()
         {
             try
             {
-                mt.most_frequent(bag);
+                Console.WriteLine($"most frequent element:  {mt.most_frequent()}");
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (BagEmptyException e)
             {
-                Console.WriteLine("Error:  " + e.Message + "!!");
+                Console.WriteLine(e.Message);
             }
 
         }
@@ -76,7 +84,7 @@ namespace Bag_Ass1
         {
             try
             {
-                mt.print_the_bag(bag);
+                mt.print_the_bag();
             }
             catch (BagEmptyException e)
             {

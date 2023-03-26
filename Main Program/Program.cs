@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-namespace Bag_Ass1
+namespace Assignment1
 {
     internal class Program
     {

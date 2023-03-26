@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bug10\\Desktop\\ELTE2\\OOP\\Bag_Ass1\\Bag_Ass1.csproj",
-      "projectName": "Bag_Ass1",
-      "projectPath": "C:\\Users\\bug10\\Desktop\\ELTE2\\OOP\\Bag_Ass1\\Bag_Ass1.csproj",
+      "projectUniqueName": "C:\\Users\\bug10\\Desktop\\ELTE2\\OOP\\Bag_Ass1\\Assignment1.csproj",
+      "projectName": "Assignment1",
+      "projectPath": "C:\\Users\\bug10\\Desktop\\ELTE2\\OOP\\Bag_Ass1\\Assignment1.csproj",
       "packagesPath": "C:\\Users\\bug10\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\bug10\\Desktop\\ELTE2\\OOP\\Bag_Ass1\\obj\\",
       "projectStyle": "PackageReference",

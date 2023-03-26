@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bag_Ass1", "Bag_Ass1.csproj", "{439A3593-FC36-40A9-8B07-F1135DD828A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment1", "Assignment1.csproj", "{439A3593-FC36-40A9-8B07-F1135DD828A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BagUnitTests", "..\BagUnitTests\BagUnitTests.csproj", "{86C18752-2694-4488-8550-91C1A370E997}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BagUnitTests", "..\BagUnitTests\BagUnitTests.csproj", "{86C18752-2694-4488-8550-91C1A370E997}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
